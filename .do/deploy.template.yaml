@@ -1,0 +1,17 @@
+spec:
+  name: template-discord-bot-worker
+
+  workers:
+  - name: worker
+    environment_slug: python
+    git:
+      branch: main
+      repo_clone_url: https://github.com/digitalocean/template-discord-bot-worker.git
+    source_dir: /
+    build_command: "pip install -r requirements.txt"
+    run_command: "python discord_bot.py"
+    instance_count: 1
+    envs:
+      - key: DISCORD_TOKEN
+        value: <REQUIRED>
+        type: SECRET
